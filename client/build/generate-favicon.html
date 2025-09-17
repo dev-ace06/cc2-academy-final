@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Favicon</title>
+</head>
+<body>
+    <h1>Favicon Generator</h1>
+    <p>This page helps generate a proper favicon.ico file for the CC2 Academy Stats app.</p>
+    
+    <canvas id="canvas" width="32" height="32" style="border: 1px solid #ccc;"></canvas>
+    
+    <script>
+        // Generate a simple favicon
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Background
+        ctx.fillStyle = '#FFD700';
+        ctx.fillRect(0, 0, 32, 32);
+        
+        // Castle shape
+        ctx.fillStyle = '#1F2937';
+        ctx.fillRect(8, 12, 16, 12);
+        ctx.fillRect(6, 16, 4, 8);
+        ctx.fillRect(22, 16, 4, 8);
+        ctx.fillRect(12, 8, 8, 8);
+        
+        // Flag
+        ctx.fillStyle = '#DC2626';
+        ctx.fillRect(20, 6, 2, 4);
+        ctx.fillRect(20, 6, 6, 2);
+        
+        // Convert to favicon
+        const link = document.createElement('a');
+        link.download = 'favicon.ico';
+        link.href = canvas.toDataURL('image/png');
+        link.textContent = 'Download favicon.ico';
+        document.body.appendChild(link);
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

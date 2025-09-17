@@ -1,0 +1,39 @@
+{
+  "short_name": "CC2 Stats",
+  "name": "CC2 Academy Stats - Clash of Clans Dashboard",
+  "description": "Modern responsive website for managing and displaying stats of 2 Clash of Clans clans",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#FFD700",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "categories": ["games", "entertainment", "utilities"],
+  "lang": "en",
+  "dir": "ltr"
+}
+
+
+
+
+
+
+
+
+
