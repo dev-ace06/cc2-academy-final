@@ -20,12 +20,26 @@ const PORT = process.env.PORT || 5000;
 // ✅ Trust proxy (needed for Render + rate limit)
 app.set('trust proxy', 1);
 
-// Security middleware
-app.use(helmet());
+// Security middleware with CSP adjusted
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net"], // allow inline scripts & CDN
+        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+        fontSrc: ["'self'", "https://fonts.gstatic.com"],
+        imgSrc: ["'self'", "data:", "https://api-assets.clashofclans.com"], // allow COC badges
+        connectSrc: ["'self'", "https://api.clashofclans.com"], // allow API calls
+        objectSrc: ["'none'"],
+        upgradeInsecureRequests: [],
+      },
+    },
+  })
+);
+
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production'
-    ? true // allow all origins in production
-    : ['http://localhost:3000'],
+  origin: process.env.NODE_ENV === 'production' ? true : ['http://localhost:3000'],
   credentials: true
 }));
 
@@ -68,7 +82,7 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// ✅ Serve React frontend in production
+// Serve React frontend in production
 const clientBuildPath = path.join(__dirname, '../client/build');
 app.use(express.static(clientBuildPath));
 
@@ -92,7 +106,6 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
-
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📊 CC2 Academy Stats API is ready!`);
