@@ -1,0 +1,270 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Custom CSS Variables for theming */
+:root {
+  --primary-color: #FFD700;
+  --secondary-color: #1E40AF;
+  --accent-color: #DC2626;
+  --background-color: #F9FAFB;
+  --surface-color: #FFFFFF;
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --border-color: #E5E7EB;
+}
+
+[data-theme="dark"] {
+  --primary-color: #FFD700;
+  --secondary-color: #3B82F6;
+  --accent-color: #EF4444;
+  --background-color: #111827;
+  --surface-color: #1F2937;
+  --text-primary: #F9FAFB;
+  --text-secondary: #D1D5DB;
+  --border-color: #374151;
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Custom component styles */
+@layer components {
+  .btn-primary {
+    @apply bg-coc-gold hover:bg-coc-gold-dark text-coc-gray-900 font-semibold py-2 px-4 rounded-lg transition-colors duration-200 shadow-coc;
+  }
+  
+  .btn-secondary {
+    @apply bg-coc-blue hover:bg-coc-blue-dark text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-danger {
+    @apply bg-coc-red hover:bg-coc-red-dark text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white dark:bg-coc-gray-800 rounded-xl shadow-lg border border-coc-gray-200 dark:border-coc-gray-700 p-6;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-2 border border-coc-gray-300 dark:border-coc-gray-600 rounded-lg bg-white dark:bg-coc-gray-700 text-coc-gray-900 dark:text-white placeholder-coc-gray-500 focus:ring-2 focus:ring-coc-gold focus:border-transparent transition-all duration-200;
+  }
+  
+  .table-header {
+    @apply bg-coc-gray-50 dark:bg-coc-gray-800 text-coc-gray-700 dark:text-coc-gray-300 font-semibold;
+  }
+  
+  .table-row {
+    @apply border-b border-coc-gray-200 dark:border-coc-gray-700 hover:bg-coc-gray-50 dark:hover:bg-coc-gray-800 transition-colors duration-150;
+  }
+  
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-gold {
+    @apply bg-coc-gold text-coc-gray-900;
+  }
+  
+  .badge-blue {
+    @apply bg-coc-blue text-white;
+  }
+  
+  .badge-green {
+    @apply bg-coc-green text-white;
+  }
+  
+  .badge-red {
+    @apply bg-coc-red text-white;
+  }
+  
+  .badge-purple {
+    @apply bg-coc-purple text-white;
+  }
+  
+  .badge-orange {
+    @apply bg-coc-orange text-white;
+  }
+  
+  .loading-spinner {
+    @apply animate-spin rounded-full h-8 w-8 border-b-2 border-coc-gold;
+  }
+  
+  .gradient-bg {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  }
+  
+  .gradient-bg-dark {
+    background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+  opacity: 0.8;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .card {
+    padding: 0.75rem;
+  }
+  
+  .btn-primary,
+  .btn-secondary,
+  .btn-danger {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  /* Mobile-specific improvements */
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  /* Better touch targets for mobile */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improved text readability on mobile */
+  body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  /* Better spacing for mobile */
+  .space-y-6 > * + * {
+    margin-top: 1rem;
+  }
+  
+  .space-y-8 > * + * {
+    margin-top: 1.5rem;
+  }
+}
+
+/* Tablet improvements */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .card {
+    padding: 1rem 1.5rem;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Mobile-first approach */
+@media (max-width: 480px) {
+  /* Extra small screens */
+  .text-2xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  
+  .text-3xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  .text-4xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .card {
+    @apply shadow-none border border-coc-gray-300;
+  }
+}
+
+
+
+
+
+

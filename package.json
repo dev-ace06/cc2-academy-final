@@ -1,0 +1,27 @@
+{
+  "name": "cc2-academy-stats",
+  "version": "1.0.0",
+  "description": "Modern responsive website for managing and displaying stats of 2 Clash of Clans clans",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npx nodemon index.js",
+    "client": "cd client/public && http-server -p 3000",
+    "build": "cd client && npm run build",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install",
+    "setup": "node setup.js",
+    "start": "npm run dev"
+  },
+  "keywords": [
+    "clash-of-clans",
+    "stats",
+    "gaming",
+    "dashboard"
+  ],
+  "author": "CC2 Academy",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "http-server": "^14.1.1"
+  }
+}
