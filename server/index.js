@@ -17,21 +17,21 @@ const mediaRoutes = require('./routes/media');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// ✅ Trust proxy (needed for express-rate-limit & proxies on Render)
+// ✅ Trust proxy (needed for Render + rate limit)
 app.set('trust proxy', 1);
 
 // Security middleware
 app.use(helmet());
 app.use(cors({
   origin: process.env.NODE_ENV === 'production'
-  ? true  // reflect request origin
-  : ['http://localhost:3000'],
+    ? true // allow all origins in production
+    : ['http://localhost:3000'],
   credentials: true
 }));
 
 // Rate limiting
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
+  windowMs: 15 * 60 * 1000,
   max: 100
 });
 app.use(limiter);
@@ -40,10 +40,10 @@ app.use(limiter);
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files from uploads directory
+// Static files (uploads)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Database connection
+// Database
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -68,24 +68,21 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Serve React frontend in production
-if (process.env.NODE_ENV === 'production') {
-  const clientBuildPath = path.join(__dirname, '../client/build');
-  app.use(express.static(clientBuildPath));
+// ✅ Serve React frontend in production
+const clientBuildPath = path.join(__dirname, '../client/build');
+app.use(express.static(clientBuildPath));
 
-  // SPA fallback for frontend routes
-  app.get('*', (req, res, next) => {
-    if (req.path.startsWith('/api/')) return next();
-    res.sendFile(path.join(clientBuildPath, 'index.html'));
-  });
-}
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api/')) return next();
+  res.sendFile(path.join(clientBuildPath, 'index.html'));
+});
 
-// 404 handler for unmatched API routes
+// 404 for API
 app.use('/api/*', (req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });
 
-// Error handling
+// Error handler
 app.use((err, req, res, next) => {
   console.error('Error:', err.stack);
   res.status(500).json({
@@ -94,9 +91,8 @@ app.use((err, req, res, next) => {
   });
 });
 
+// Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📊 CC2 Academy Stats API is ready!`);
 });
-
-//complete
