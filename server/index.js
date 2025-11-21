@@ -108,5 +108,5 @@ app.use((err, req, res, next) => {
 // Start server
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📊 CC2 Academy Stats API is ready!`);
+  console.log(`📊 CC2 Family Stats API is ready!`);
 });

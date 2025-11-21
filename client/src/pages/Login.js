@@ -60,7 +60,7 @@ const Login = () => {
             Sign in to your account
           </h2>
           <p className="mt-2 text-sm text-coc-gray-600 dark:text-coc-gray-400">
-            Access your CC2 Academy Stats dashboard
+            Access your CC2 Family Stats dashboard
           </p>
         </div>
 

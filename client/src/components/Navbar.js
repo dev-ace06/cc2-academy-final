@@ -51,7 +51,7 @@ const Navbar = () => {
             </div>
             <div className="hidden sm:block">
               <h1 className="text-lg sm:text-xl font-bold text-coc-gray-900 dark:text-white">
-                CC2 Academy Stats
+                CC2 Family Stats
               </h1>
               <p className="text-xs text-coc-gray-500 dark:text-coc-gray-400">
                 Clash of Clans Dashboard
@@ -59,7 +59,7 @@ const Navbar = () => {
             </div>
             <div className="sm:hidden">
               <h1 className="text-sm font-bold text-coc-gray-900 dark:text-white">
-                CC2 Academy
+                CC2 Family
               </h1>
             </div>
           </Link>

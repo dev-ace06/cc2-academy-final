@@ -97,7 +97,7 @@ const Register = () => {
             Create your account
           </h2>
           <p className="mt-2 text-sm text-coc-gray-600 dark:text-coc-gray-400">
-            Join CC2 Academy Stats community
+            Join CC2 Family Stats community
           </p>
         </div>
 

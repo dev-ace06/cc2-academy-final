@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-console.log('🏰 CC2 Academy Stats - API Configuration');
+console.log('🏰 CC2 Family Stats - API Configuration');
 console.log('==========================================\n');
 
 // Your API key

@@ -53,7 +53,7 @@ const Home = () => {
         <div className="text-center">
           <div className="loading-spinner mx-auto mb-4"></div>
           <p className="text-coc-gray-600 dark:text-coc-gray-400">
-            Loading CC2 Academy Stats...
+            Loading CC2 Family Stats...
           </p>
         </div>
       </div>
@@ -65,7 +65,7 @@ const Home = () => {
       {/* Header */}
       <div className="text-center">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-coc-gray-900 dark:text-white mb-3 sm:mb-4">
-          Welcome to CC2 Academy Stats
+          Welcome to CC2 Family Stats
         </h1>
         <p className="text-base sm:text-lg text-coc-gray-600 dark:text-coc-gray-400 mb-4 sm:mb-6">
           Track and manage your Clash of Clans clan statistics

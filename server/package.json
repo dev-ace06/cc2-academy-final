@@ -1,7 +1,7 @@
 {
   "name": "cc2-academy-stats-server",
   "version": "1.0.0",
-  "description": "Backend server for CC2 Academy Stats",
+  "description": "Backend server for CC2 Family Stats",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
